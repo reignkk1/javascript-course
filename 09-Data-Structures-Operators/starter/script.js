@@ -52,6 +52,76 @@
 
 // 6에 대한 테스트 데이터: '데이비스', '뮐러', '레반도프스키' 및 '키미히' 선수를 사용합니다. 그런 다음 game.scored의 플레이어와 함께 함수를 다시 호출합니다.
 
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
+
+// // 1)
+// const [players1, players2] = game.players;
+
+// // 2)
+// const [gk, ...fieldPlayers] = players1;
+
+// // 3)
+// const allPlayers = [...players1, ...players2];
+
+// // 4)
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+
+// // 5)
+// const {
+//   odds: { team1, team2, x: draw },
+// } = game;
+
+// // 6)
+
+// const printGoals = (...arg) => {
+//   console.log(`${arg.length}명이 골을 넣었습니다.`);
+// };
+
+// printGoals('Thiago', 'Coutinho', 'Perisic');
+
+// // 7)
+// team1 < team2 && console.log('team1이 이겼습니다!');
+// team1 > team2 && console.log('team2이 이겼습니다!');
+
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -93,31 +163,43 @@ const game = {
   },
 };
 
+// 축구 베팅 앱을 계속 진행하겠습니다!
+
+// 1. game.scored 배열을 반복하고 골 번호와 함께 각 플레이어 이름을 콘솔에 인쇄합니다(예: "Goal 1: Lewandowski").
+// 2. 루프를 사용하여 평균 홀수를 계산하고 콘솔에 기록합니다(평균 계산 방법은 이미 학습했습니다. 기억이 나지 않으면 확인하십시오)
+// 3. 3개의 배당률을 콘솔에 출력하지만 다음과 같이 멋진 형식으로 출력합니다.
+// 승률 바이에른 뮌헨: 1.33
+// 무승부 승률: 3.25
+// 승률 Borrussia Dortmund: 6.5
+// 게임 개체에서 직접 팀 이름을 가져옵니다. 하드코딩하지 마세요("그리기" 제외). 힌트: 배당률과 게임 개체의 속성 이름이 어떻게 같은지 확인하세요 😉
+
+// 보너스: 속성으로 득점한 플레이어의 이름과 값으로 골 수를 포함하는 'scorers'라는 개체를 만듭니다. 이 게임에서는 다음과 같이 표시됩니다.
+// {
+// 나르비: 1,
+// 훔멜스: 1,
+// 레반도프스키: 2
+// }
+
+// 행운을 빕니다 😀
+
 // 1)
-const [players1, players2] = game.players;
+for (const [goal, player] of game.scored.entries()) {
+  console.log(`Goal ${goal + 1}: ${player}`);
+}
 
 // 2)
-const [gk, ...fieldPlayers] = players1;
+let total = 0;
+const odds = Object.values(game.odds);
+for (const odd of odds) {
+  total += odd;
+}
+console.log(total / odds.length);
 
 // 3)
-const allPlayers = [...players1, ...players2];
+for (const [key, value] of Object.entries(game.odds)) {
+  console.log(`${game[key] || 'x'}: ${value}`);
+}
+console.log(oddsEntries);
 
-// 4)
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-
-// 5)
-const {
-  odds: { team1, team2, x: draw },
-} = game;
-
-// 6)
-
-const printGoals = (...arg) => {
-  console.log(`${arg.length}명이 골을 넣었습니다.`);
-};
-
-printGoals('Thiago', 'Coutinho', 'Perisic');
-
-// 7)
-team1 < team2 && console.log('team1이 이겼습니다!');
-team1 > team2 && console.log('team2이 이겼습니다!');
+// bonus)
+// 보너스 코드 찾아서 공부하기
