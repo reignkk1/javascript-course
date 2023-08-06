@@ -183,23 +183,64 @@ const game = {
 // 행운을 빕니다 😀
 
 // 1)
-for (const [goal, player] of game.scored.entries()) {
-  console.log(`Goal ${goal + 1}: ${player}`);
-}
+// for (const [goal, player] of game.scored.entries()) {
+//   console.log(`Goal ${goal + 1}: ${player}`);
+// }
 
-// 2)
-let total = 0;
-const odds = Object.values(game.odds);
-for (const odd of odds) {
-  total += odd;
-}
-console.log(total / odds.length);
+// // 2)
+// let total = 0;
+// const odds = Object.values(game.odds);
+// for (const odd of odds) {
+//   total += odd;
+// }
+// console.log(total / odds.length);
 
-// 3)
-for (const [key, value] of Object.entries(game.odds)) {
-  console.log(`${game[key] || 'x'}: ${value}`);
-}
-console.log(oddsEntries);
+// // 3)
+// for (const [key, value] of Object.entries(game.odds)) {
+//   console.log(`${game[key] || 'x'}: ${value}`);
+// }
+// console.log(oddsEntries);
 
 // bonus)
 // 보너스 코드 찾아서 공부하기
+
+// 우리의 축구 베팅 앱을 계속해봅시다! 이번에는 경기 중에 발생한 이벤트 로그가 포함된 지도가 있습니다. 값은 이벤트 자체이며, 핵심은 각 이벤트가 발생한 분입니다(축구 경기는 90분 이상의 추가 시간이 있습니다).
+
+// 1. 발생한 다양한 게임 이벤트의 배열 '이벤트' 생성(중복되지 않음)
+// 2. 게임이 끝난 후, 64분의 옐로카드가 불공정한 것으로 밝혀졌습니다. 따라서 게임 이벤트 로그에서 이 이벤트를 제거하십시오.
+// 3. 다음 문자열을 콘솔에 인쇄합니다. "평균적으로 9분마다 이벤트가 발생했습니다."(게임 시간은 90분입니다.)
+// 4. 이벤트를 반복하여 콘솔에 기록하고 게임의 전반부인지 후반부인지 표시합니다. 다음과 같이 표시합니다:
+// [전반전] 17: ⚽ 목표 달성
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// 1)
+const events = new Set(gameEvents.values());
+console.log([...events]);
+
+// 2)
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3)
+const restTime = [...gameEvents.keys()].pop();
+console.log(
+  `평균적으로 ${restTime / gameEvents.size}분마다 이벤트가 발생했습니다.`
+);
+
+// 4)
+for (const [key, value] of gameEvents) {
+  console.log(`${key < 45 ? '[전반전]' : '[후반전]'} ${key}: ${value}`);
+}
