@@ -122,46 +122,46 @@
 // team1 < team2 && console.log('team1이 이겼습니다!');
 // team1 > team2 && console.log('team2이 이겼습니다!');
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
 // 축구 베팅 앱을 계속 진행하겠습니다!
 
@@ -212,35 +212,78 @@ const game = {
 // 4. 이벤트를 반복하여 콘솔에 기록하고 게임의 전반부인지 후반부인지 표시합니다. 다음과 같이 표시합니다:
 // [전반전] 17: ⚽ 목표 달성
 
-const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// const gameEvents = new Map([
+//   [17, '⚽️ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽️ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽️ GOAL'],
+//   [80, '⚽️ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
+
+// // 1)
+// const events = new Set(gameEvents.values());
+// console.log([...events]);
+
+// // 2)
+// gameEvents.delete(64);
+// console.log(gameEvents);
+
+// // 3)
+// const restTime = [...gameEvents.keys()].pop();
+// console.log(
+//   `평균적으로 ${restTime / gameEvents.size}분마다 이벤트가 발생했습니다.`
+// );
+
+// // 4)
+// for (const [key, value] of gameEvents) {
+//   console.log(`${key < 45 ? '[전반전]' : '[후반전]'} ${key}: ${value}`);
+// }
+
+// underscore_case로 작성된 변수 이름 목록을 받은 프로그램을 작성하여 camelCase로 변환합니다.
+
+// 입력은 DOM에 삽입된 텍스트 영역에서 발생하며(아래 코드 참조), 버튼을 누르면 변환됩니다.
+
+// 이 테스트 데이터(텍스트 영역에 붙여넣기)
+// underscore_case
+// first_name
+// Some_Variable
+// calculate_AGE
+// delayed_departure
+
+// 이 출력을 생성해야 합니다(console.log 출력 5개 별도)
+// underscoreCase      ✅
+// firstName           ✅✅
+// someVariable        ✅✅✅
+// calculateAge        ✅✅✅✅
+// delayedDeparture    ✅✅✅✅✅
+
+// 힌트 1: 텍스트 영역에서 새 줄을 정의하는 문자 기억하기 😉
+// 힌트 2: 솔루션은 a_b와 같이 두 단어로 만들어진 변수에 대해서만 작동하면 됩니다
+// 힌트 3: ✅에 대한 걱정 없이 시작하십시오. 변수 이름 변환이 작동한 후에만 이 문제를 해결하십시오. 😉
+// 힌트 4: 이 도전은 의도적으로 어렵기 때문에 막힐 경우를 대비하여 해결책을 보기 시작하십시오. 그런 다음 잠시 멈추고 계속하십시오!
+
+// 그 후, 당신의 테스트 데이터로 테스트하세요!
+
+// 행운을 빌어요 😀
 
 // 1)
-const events = new Set(gameEvents.values());
-console.log([...events]);
+const convertCamelCase = underCase => {
+  const [firstName, lastName] = underCase.toLowerCase().split('_');
 
-// 2)
-gameEvents.delete(64);
-console.log(gameEvents);
+  console.log(
+    firstName + lastName.replace(lastName[0], lastName[0].toUpperCase())
+  );
+};
 
-// 3)
-const restTime = [...gameEvents.keys()].pop();
-console.log(
-  `평균적으로 ${restTime / gameEvents.size}분마다 이벤트가 발생했습니다.`
-);
-
-// 4)
-for (const [key, value] of gameEvents) {
-  console.log(`${key < 45 ? '[전반전]' : '[후반전]'} ${key}: ${value}`);
-}
+convertCamelCase('Some_Variable');
+underscore_case;
+first_name;
+Some_Variable;
+calculate_AGE;
+delayed_departure;
