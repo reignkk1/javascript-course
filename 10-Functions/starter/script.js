@@ -30,37 +30,56 @@
 // 행운을 빌어요 😀
 // */
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0),
-  registerNewAnswer() {
-    const answer = Number(
-      prompt(
-        `${this.question}
-  
-            ${this.options}`
-      )
-    );
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
+//   registerNewAnswer() {
+//     const answer = Number(
+//       prompt(
+//         `${this.question}
 
-    if (answer !== 0 && answer !== 1 && answer !== 2 && answer !== 3) {
-      return alert('제대로 입력해주세요!');
-    }
+//             ${this.options}`
+//       )
+//     );
 
-    poll.answers[answer]++;
-    this.displayResults('string');
-  },
-  displayResults(type = 'array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    }
-    if (type === 'string') {
-      console.log(this.answers.join(', '));
-    }
-  },
-};
+//     if (answer !== 0 && answer !== 1 && answer !== 2 && answer !== 3) {
+//       return alert('제대로 입력해주세요!');
+//     }
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+//     poll.answers[answer]++;
+//     this.displayResults('string');
+//   },
+//   displayResults(type = 'array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     }
+//     if (type === 'string') {
+//       console.log(this.answers.join(', '));
+//     }
+//   },
+// };
+
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// Coding Challenge #2
+
+// 이것은 코딩보다는 사고의 문제입니다. 🤓
+
+// 아래의 IIFE를 선택하고 기능의 끝에 BODY 요소를 클릭할 때마다 선택한 h1 요소('헤더')의 색상을 파란색으로 변경하는 이벤트 수신기를 부착합니다. h1 요소를 다시 선택하지 마십시오!
+
+// 그리고 이제 이것이 왜 효과가 있었는지 당신 자신(또는 당신 주변의 누군가)에게 설명하라! 당신이 필요한 모든 시간을 할애하라. 정확히 언제 콜백 함수가 실행되는지, 그리고 그것이 이 예시와 관련된 변수들에 어떤 의미인지 생각해보라.
+
+// 행운을 빌어요 😀
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
